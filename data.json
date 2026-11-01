@@ -1,0 +1,22 @@
+{
+  "githubUser": "Sea-Shark-SS",
+  "name": "Choyon",
+  "tagline": "Computer science student at East West University, working on deep learning for medical imaging.",
+  "about": "I'm an undergraduate in the Department of Computer Science and Engineering at East West University. I'm interested in machine learning, especially self-supervised learning and how it can help when labelled medical data is scarce. This page collects my projects, research and achievements in one place.",
+  "photo": "",
+  "cv": "",
+  "research": [
+    {
+      "title": "Self-Supervised Learning for Chest X-ray Classification",
+      "desc": "Undergraduate thesis exploring how self-supervised pretraining improves chest X-ray classification when labelled data is limited.",
+      "tags": ["SSL", "Medical imaging", "Deep learning"],
+      "link": ""
+    }
+  ],
+  "featured": [],
+  "achievements": [],
+  "contact": [
+    { "label": "GitHub", "url": "https://github.com/Sea-Shark-SS" }
+  ],
+  "hiddenRepos": ["Sea-Shark-SS.github.io"]
+}
