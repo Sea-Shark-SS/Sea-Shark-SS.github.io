@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Choyon · Portfolio</title>
+<meta name="description" content="Computer science student at East West University. Projects, research and achievements.">
+<style>
+  :root {
+    --bg: #f7f7f4; --surface: #ffffff; --text: #1c1d1f; --muted: #62666d;
+    --line: #e4e4de; --accent: #0f766e; --accent-soft: #d9f0ed;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #101213; --surface: #181b1c; --text: #ecefef; --muted: #9aa1a6;
+      --line: #272b2d; --accent: #5eead4; --accent-soft: #123532;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #101213; --surface: #181b1c; --text: #ecefef; --muted: #9aa1a6;
+    --line: #272b2d; --accent: #5eead4; --accent-soft: #123532;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font: 16px/1.65 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 0 22px; }
+  nav {
+    position: sticky; top: 0; z-index: 10; background: color-mix(in srgb, var(--bg) 88%, transparent);
+    backdrop-filter: blur(8px); border-bottom: 1px solid var(--line);
+  }
+  nav .wrap { display: flex; align-items: center; gap: 22px; height: 56px; }
+  nav .brand { font-weight: 700; color: var(--text); margin-right: auto; }
+  nav a.link { color: var(--muted); font-size: 14px; }
+  nav a.link:hover { color: var(--text); text-decoration: none; }
+  button.theme {
+    background: none; border: 1px solid var(--line); color: var(--muted);
+    border-radius: 8px; padding: 4px 10px; cursor: pointer; font-size: 13px;
+  }
+  header.hero { padding: 84px 0 56px; }
+  .hero .hi { color: var(--accent); font-weight: 600; font-size: 14px; letter-spacing: .06em; text-transform: uppercase; }
+  .hero h1 { font-size: clamp(36px, 7vw, 58px); line-height: 1.1; margin: 10px 0 16px; letter-spacing: -.02em; }
+  .hero p { color: var(--muted); max-width: 620px; font-size: 18px; margin: 0 0 26px; }
+  .btns { display: flex; gap: 12px; flex-wrap: wrap; }
+  .btn {
+    display: inline-block; padding: 10px 18px; border-radius: 10px; font-weight: 600; font-size: 15px;
+    border: 1px solid var(--line); color: var(--text); background: var(--surface);
+  }
+  .btn.primary { background: var(--accent); color: var(--bg); border-color: var(--accent); }
+  .btn:hover { text-decoration: none; filter: brightness(1.06); }
+  section { padding: 46px 0; border-top: 1px solid var(--line); }
+  h2 { font-size: 24px; margin: 0 0 22px; letter-spacing: -.01em; }
+  .grid { display: grid; gap: 16px; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); }
+  .card {
+    background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 18px 18px 16px;
+    display: flex; flex-direction: column; gap: 8px;
+  }
+  .card h3 { margin: 0; font-size: 17px; }
+  .card p { margin: 0; color: var(--muted); font-size: 14.5px; flex: 1; }
+  .meta { display: flex; gap: 12px; flex-wrap: wrap; font-size: 13px; color: var(--muted); }
+  .tag {
+    display: inline-block; background: var(--accent-soft); color: var(--accent);
+    font-size: 12px; font-weight: 600; padding: 2px 9px; border-radius: 99px; margin: 0 6px 6px 0;
+  }
+  .timeline { list-style: none; margin: 0; padding: 0; border-left: 2px solid var(--line); }
+  .timeline li { position: relative; padding: 0 0 22px 24px; }
+  .timeline li::before {
+    content: ""; position: absolute; left: -7px; top: 7px; width: 12px; height: 12px;
+    border-radius: 50%; background: var(--accent); border: 2px solid var(--bg);
+  }
+  .timeline .when { font-size: 13px; color: var(--muted); }
+  .timeline h3 { margin: 2px 0 2px; font-size: 17px; }
+  .timeline p { margin: 0; color: var(--muted); font-size: 15px; }
+  .status { color: var(--muted); font-size: 14px; }
+  .contact-links { display: flex; gap: 18px; flex-wrap: wrap; }
+  footer { padding: 34px 0 54px; color: var(--muted); font-size: 14px; border-top: 1px solid var(--line); }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="brand" href="#top">Choyon</a>
+    <a class="link" href="#about">About</a>
+    <a class="link" href="#research">Research</a>
+    <a class="link" href="#projects">Projects</a>
+    <a class="link" href="#achievements">Achievements</a>
+    <a class="link" href="#contact">Contact</a>
+    <button class="theme" id="themeBtn" type="button" aria-label="Toggle theme">Theme</button>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <div class="hi">Hello, I’m</div>
+    <h1>Choyon</h1>
+    <p id="tagline"></p>
+    <div class="btns">
+      <a class="btn primary" href="#projects">See my work</a>
+      <a class="btn" id="ghBtn" href="#" target="_blank" rel="noopener">GitHub profile</a>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section id="about">
+    <h2>About</h2>
+    <p id="about-text"></p>
+  </section>
+
+  <section id="research">
+    <h2>Research</h2>
+    <div class="grid" id="research-grid"></div>
+  </section>
+
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="grid" id="featured-grid"></div>
+    <h2 style="margin-top:38px;font-size:19px">All repositories</h2>
+    <p class="status" id="repo-status">Loading from GitHub…</p>
+    <div class="grid" id="repo-grid"></div>
+  </section>
+
+  <section id="achievements">
+    <h2>Achievements</h2>
+    <ul class="timeline" id="achievement-list"></ul>
+  </section>
+
+  <section id="contact">
+    <h2>Contact</h2>
+    <div class="contact-links" id="contact-links"></div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">© <span id="year"></span> Choyon · Built with plain HTML, hosted on GitHub Pages.</div>
+</footer>
+
+<script>
+/* ======================================================================
+   EDIT THIS BLOCK. Everything on the page is generated from it.
+   ====================================================================== */
+const SITE = {
+  githubUser: "Sea-Shark-SS",
+  tagline: "Computer science student at East West University, working on deep learning for medical imaging.",
+  about:
+    "I’m an undergraduate in the Department of Computer Science and Engineering at East West University. " +
+    "I’m interested in machine learning, especially self-supervised learning and how it can help when labelled medical data is scarce. " +
+    "This page collects my projects, research and achievements in one place.",
+
+  research: [
+    {
+      title: "Self-Supervised Learning for Chest X-ray Classification",
+      desc: "Undergraduate thesis exploring how self-supervised pretraining improves chest X-ray classification when labelled data is limited.",
+      tags: ["SSL", "Medical imaging", "PyTorch"],
+      link: ""            // paper, repo or slides URL (optional)
+    }
+  ],
+
+  // Pin the repos you want highlighted. Add your own descriptions here.
+  featured: [
+    // { title: "Project name", desc: "One-line description.", tags: ["Python"], link: "https://github.com/Sea-Shark-SS/repo" }
+  ],
+
+  // Newest first.
+  achievements: [
+    // { when: "2026", title: "Title of the achievement", desc: "Short detail.", link: "" }
+  ],
+
+  contact: [
+    { label: "GitHub", url: "https://github.com/Sea-Shark-SS" }
+    // { label: "Email", url: "mailto:you@example.com" },
+    // { label: "LinkedIn", url: "https://www.linkedin.com/in/your-handle" }
+  ],
+
+  hiddenRepos: ["Sea-Shark-SS.github.io"]   // repos to leave out of the auto list
+};
+/* ====================================================================== */
+
+const $ = (id) => document.getElementById(id);
+function el(tag, props, children) {
+  const n = document.createElement(tag);
+  if (props) Object.keys(props).forEach(k => {
+    if (k === "text") n.textContent = props[k]; else n.setAttribute(k, props[k]);
+  });
+  (children || []).forEach(c => n.appendChild(c));
+  return n;
+}
+function tagsEl(tags) {
+  const box = el("div");
+  (tags || []).forEach(t => box.appendChild(el("span", { class: "tag", text: t })));
+  return box;
+}
+function card(item) {
+  const title = item.link
+    ? el("h3", {}, [el("a", { href: item.link, target: "_blank", rel: "noopener", text: item.title })])
+    : el("h3", { text: item.title });
+  return el("div", { class: "card" }, [title, el("p", { text: item.desc || "" }), tagsEl(item.tags)]);
+}
+
+$("tagline").textContent = SITE.tagline;
+$("about-text").textContent = SITE.about;
+$("ghBtn").href = "https://github.com/" + SITE.githubUser;
+$("year").textContent = new Date().getFullYear();
+
+SITE.research.forEach(r => $("research-grid").appendChild(card(r)));
+if (!SITE.research.length) $("research").style.display = "none";
+
+if (SITE.featured.length) SITE.featured.forEach(f => $("featured-grid").appendChild(card(f)));
+else $("featured-grid").style.display = "none";
+
+const list = $("achievement-list");
+if (SITE.achievements.length) {
+  SITE.achievements.forEach(a => {
+    const h = a.link
+      ? el("h3", {}, [el("a", { href: a.link, target: "_blank", rel: "noopener", text: a.title })])
+      : el("h3", { text: a.title });
+    list.appendChild(el("li", {}, [el("div", { class: "when", text: a.when || "" }), h, el("p", { text: a.desc || "" })]));
+  });
+} else {
+  list.replaceWith(el("p", { class: "status", text: "Achievements will appear here. Add them in the SITE block at the bottom of index.html." }));
+}
+
+SITE.contact.forEach(c =>
+  $("contact-links").appendChild(el("a", { href: c.url, target: "_blank", rel: "noopener", text: c.label })));
+
+/* Live repo list from the public GitHub API (no token needed). */
+fetch("https://api.github.com/users/" + SITE.githubUser + "/repos?per_page=100&sort=updated")
+  .then(r => { if (!r.ok) throw new Error(r.status); return r.json(); })
+  .then(repos => {
+    const shown = repos.filter(r => !r.fork && SITE.hiddenRepos.indexOf(r.name) === -1);
+    if (!shown.length) { $("repo-status").textContent = "No public repositories to show yet."; return; }
+    $("repo-status").remove();
+    shown.forEach(r => {
+      const meta = el("div", { class: "meta" });
+      if (r.language) meta.appendChild(el("span", { text: r.language }));
+      meta.appendChild(el("span", { text: "★ " + r.stargazers_count }));
+      meta.appendChild(el("span", { text: "Updated " + r.updated_at.slice(0, 10) }));
+      $("repo-grid").appendChild(el("div", { class: "card" }, [
+        el("h3", {}, [el("a", { href: r.html_url, target: "_blank", rel: "noopener", text: r.name })]),
+        el("p", { text: r.description || "No description yet." }),
+        meta
+      ]));
+    });
+  })
+  .catch(() => {
+    $("repo-status").textContent = "Couldn’t load repositories right now. See them on GitHub instead.";
+  });
+
+/* Theme toggle */
+$("themeBtn").addEventListener("click", () => {
+  const root = document.documentElement;
+  const dark = root.dataset.theme
+    ? root.dataset.theme === "dark"
+    : window.matchMedia("(prefers-color-scheme: dark)").matches;
+  root.dataset.theme = dark ? "light" : "dark";
+});
+</script>
+</body>
+</html>
